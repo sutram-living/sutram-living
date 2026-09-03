@@ -1,8 +1,37 @@
 {
   "version": 2,
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs20.x"
+  "builds": [
+    {
+      "src": "api/create-order.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/verify-payment.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/create-order",
+      "dest": "/api/create-order.js"
+    },
+    {
+      "src": "/api/verify-payment",
+      "dest": "/api/verify-payment.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
