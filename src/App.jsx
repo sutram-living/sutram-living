@@ -1164,7 +1164,7 @@ const googleAdminLogin = (credentialResponse) => {
   const startOnlinePayment = async () => {
     try {
       const response = await fetch(
-        "/api/create-order"
+        "/api/create-order",
         {
           method: "POST",
           headers: {
@@ -1246,7 +1246,7 @@ const googleAdminLogin = (credentialResponse) => {
 
               const verifyResponse =
                 await fetch(
-                  "/api/verify-payment"
+                  "/api/verify-payment",
                   {
                     method: "POST",
                     headers: {
