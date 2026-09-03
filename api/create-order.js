@@ -28,11 +28,12 @@ export default async function handler(req, res) {
       currency: "INR",
       receipt: `sutram_${Date.now()}`,
     });
-
-    return res.status(200).json({
-      success: true,
-      order,
-    });
+return res.status(200).json({
+  success: true,
+  order,
+  key_id: process.env.RAZORPAY_KEY_ID,
+});
+    
   } catch (error) {
     console.error("Razorpay order error:", error);
 
